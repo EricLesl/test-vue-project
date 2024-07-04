@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useCounter } from '../composables/useCounter'
+
+const { counter } = useCounter()
+
 defineProps<{
   msg: string
 }>()
@@ -8,6 +12,10 @@ defineProps<{
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
     <h3>This projects tests shit in vue...</h3>
+    <br />
+    <div>
+      <h1>Counter: {{ counter }}</h1>
+    </div>
   </div>
 </template>
 
