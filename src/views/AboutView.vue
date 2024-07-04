@@ -1,6 +1,19 @@
+<script setup lang="ts">
+import { usePosts } from '../api/queries/usePosts'
+
+const { posts } = usePosts()
+</script>
+
 <template>
-  <div class="about">
-    <h1>This is an about page with changes</h1>
+  <div>
+    <h1>Posts grab from cache!</h1>
+    <br />
+    <ul>
+      <li v-for="post in posts" :key="post.id">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.body }}</p>
+      </li>
+    </ul>
   </div>
 </template>
 

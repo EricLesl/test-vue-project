@@ -6,11 +6,11 @@ export function usePosts() {
   const query = useQuery({
     queryKey: ['posts'],
     queryFn: async () => getPosts(),
-    refetchOnWindowFocus: true
+    refetchOnWindowFocus: true,
+    staleTime: 1000 * 60 * 5 // 5 mins
   })
 
   const posts = computed(() => {
-    console.log('Query Data:', query.data.value)
     return query.data.value
   })
 

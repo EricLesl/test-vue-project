@@ -6,7 +6,8 @@ const { posts } = usePosts()
 
 <template>
   <div>
-    <h1>Posts</h1>
+    <h1>Posts loaded on Page Load</h1>
+    <br />
     <ul>
       <li v-for="post in posts" :key="post.id">
         <h2>{{ post.title }}</h2>
