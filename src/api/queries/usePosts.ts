@@ -1,6 +1,13 @@
 import { useQuery } from '@tanstack/vue-query'
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import axios from 'axios'
+
+interface Post {
+  id: number
+  userId: number
+  title: string
+  body: string
+}
 
 export function usePosts() {
   const query = useQuery({
@@ -10,9 +17,17 @@ export function usePosts() {
     staleTime: 1000 * 60 * 5 // 5 mins
   })
 
-  const posts = computed(() => {
-    return query.data.value?.slice(0, 5)
-  })
+  const posts = ref<Post[]>([])
+
+  watch(
+    () => query.data.value,
+    (newPosts) => {
+      if (newPosts) {
+        posts.value = newPosts.slice(0, 5)
+      }
+    },
+    { deep: true }
+  )
 
   async function getPosts() {
     const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
@@ -20,9 +35,14 @@ export function usePosts() {
     return response.data
   }
 
+  function deletePosts(id: number) {
+    posts.value = posts.value.filter((post) => post.id !== id)
+  }
+
   return {
     ...query,
-    posts
+    posts,
+    deletePosts
   }
 }
 
