@@ -11,7 +11,7 @@ export function usePosts() {
   })
 
   const posts = computed(() => {
-    return query.data.value
+    return query.data.value?.slice(0, 5)
   })
 
   async function getPosts() {
