@@ -8,11 +8,11 @@ import HelloWorld from './components/HelloWorld.vue'
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it! change" />
+      <HelloWorld msg="Eric is THE MAN" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">Posts</RouterLink>
+        <RouterLink to="/about">Cached Posts</RouterLink>
         <RouterLink to="/new">New</RouterLink>
       </nav>
     </div>
