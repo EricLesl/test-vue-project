@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePosts } from '../api/queries/usePosts'
+import { usePosts } from '@/composables/usePosts'
 
 const { posts } = usePosts()
 </script>
