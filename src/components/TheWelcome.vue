@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { usePosts } from '../api/queries/usePosts'
 
-const { posts, deletePosts } = usePosts()
+const { posts, deletePost } = usePosts()
 </script>
 
 <template>
@@ -12,7 +12,7 @@ const { posts, deletePosts } = usePosts()
       <li v-for="post in posts" :key="post.id">
         <h2>{{ post.title }}</h2>
         <p>{{ post.body }}</p>
-        <button @click="deletePosts(post.id)">Delete</button>
+        <button @click="deletePost(post.id)">Delete</button>
       </li>
     </ul>
   </div>
